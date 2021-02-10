@@ -20,13 +20,15 @@ export interface GridState {
   generation: number;
 }
 
-export const initialState = {
+const initialState = {
   grid: Array.from(Array(nRows), () => Array(nCols).fill(0)),
   isPlaying: false,
   generation: 0,
 };
 
-export const gridReducer = (state: GridState = initialState, action: ActionTypes) => {
+export const getInitialState = () => JSON.parse(JSON.stringify(initialState))
+
+export const gridReducer = (state: GridState = getInitialState(), action: ActionTypes) => {
   switch (action.type) {
     case "PLAY": {
       return { ...state, isPlaying: true };
@@ -61,7 +63,7 @@ export const gridReducer = (state: GridState = initialState, action: ActionTypes
       };
     }
     case "CLEAR": {
-      return initialState;
+      return getInitialState();
     }
     case "TOGGLE_CELL": {
       const { x, y } = action.payload;

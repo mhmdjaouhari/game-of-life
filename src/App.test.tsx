@@ -2,19 +2,65 @@ import React from "react";
 import { render, fireEvent, cleanup, waitFor } from "@testing-library/react";
 import App from "./App";
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { createStore } from "redux";
+import { gridReducer } from "./gridReducer";
 
 afterEach(cleanup);
 
+test("play and pause buttons work", async () => {
+  const { getByTestId } = render(
+    <Provider store={createStore(gridReducer)}>
+      <App />
+    </Provider>
+  );
+
+  const playButton = getByTestId("play-button");
+  const pauseButton = getByTestId("pause-button");
+  const generationCount = getByTestId("generation-count");
+
+  fireEvent.click(playButton);
+  await new Promise((r) => setTimeout(r, 290));
+  fireEvent.click(pauseButton);
+
+  expect(Number(generationCount.textContent)).toEqual(2);
+});
+
+test("clear button works", async () => {
+  const { getByTestId } = render(
+    <Provider store={createStore(gridReducer)}>
+      <App />
+    </Provider>
+  );
+
+  const clearButton = getByTestId("clear-button");
+  const grid = getByTestId("grid");
+
+  const cell00 = grid.children[0].children[0] as HTMLElement;
+
+  fireEvent.click(cell00);
+
+  expect(cell00.style.backgroundColor).toEqual("rgb(0, 0, 0)");
+
+  fireEvent.click(clearButton);
+
+  await new Promise((r) => setTimeout(r, 1000));
+
+  grid.childNodes.forEach((row, i) =>
+    row.childNodes.forEach((cell, j) => {
+      const element = cell as HTMLElement;
+      if (element != null) expect(element.style.backgroundColor).toEqual("rgb(221, 221, 221)");
+    })
+  );
+});
+
 test("glider (planeur) will move across the border to the other side", async () => {
   const { getByTestId } = render(
-    <Provider store={store}>
+    <Provider store={createStore(gridReducer)}>
       <App />
     </Provider>
   );
 
   const stepButton = getByTestId("step-button");
-  const pauseButton = getByTestId("pause-button");
   const grid = getByTestId("grid");
   const generationCount = getByTestId("generation-count");
 
@@ -40,9 +86,6 @@ test("glider (planeur) will move across the border to the other side", async () 
   // run the simulation
   // n.b. here, I used stepButton instead of playButton to avoid race conditions
   for (let i = 0; i < 20; i++) fireEvent.click(stepButton);
-  fireEvent.click(pauseButton);
-
-  console.log(finalGliderNodesXY);
 
   // check
   expect(generationCount.textContent).toEqual("20");
