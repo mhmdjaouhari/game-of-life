@@ -1,48 +1,26 @@
-export interface PlayAction {
-  type: "PLAY";
-}
-export interface PauseAction {
-  type: "PAUSE";
-}
-export interface StepAction {
-  type: "STEP";
-}
+import { PLAY, PAUSE, STEP, RANDOMIZE, CLEAR, TOGGLE_CELL, ActionTypes } from "./types";
 
-export interface RandomizeAction {
-  type: "RANDOMIZE";
-}
-export interface ClearAction {
-  type: "CLEAR";
-}
-
-export interface ToggleCellAction {
-  type: "TOGGLE_CELL";
-  payload: { x: number; y: number };
-}
-
-export type Action = PlayAction | PauseAction | StepAction | RandomizeAction | ClearAction | ToggleCellAction;
-
-export const play = (): Action => ({
-  type: "PLAY",
+export const play = (): ActionTypes => ({
+  type: PLAY,
 });
 
-export const pause = (): Action => ({
-  type: "PAUSE",
+export const pause = (): ActionTypes => ({
+  type: PAUSE,
 });
 
-export const step = (): Action => ({
-  type: "STEP",
+export const step = (): ActionTypes => ({
+  type: STEP,
 });
 
-export const randomize = (): Action => ({
-  type: "RANDOMIZE",
+export const randomize = (): ActionTypes => ({
+  type: RANDOMIZE,
 });
 
-export const clear = (): Action => ({
-  type: "CLEAR",
+export const clear = (): ActionTypes => ({
+  type: CLEAR,
 });
 
-export const toggleCell = (x: number, y: number): Action => ({
-  type: "TOGGLE_CELL",
+export const toggleCell = (x: number, y: number): ActionTypes => ({
+  type: TOGGLE_CELL,
   payload: { x, y },
 });

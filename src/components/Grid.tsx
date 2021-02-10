@@ -10,7 +10,7 @@ const Grid = (props: Props) => {
   const grid = useSelector<GridState, GridState["grid"]>((state) => state.grid);
 
   return (
-    <div>
+    <div data-testid="grid">
       {grid.map((row, i) => (
         <div key={i} style={{ height: 17 }}>
           {row.map((cell, j) => (

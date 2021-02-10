@@ -1,4 +1,4 @@
-import { Action } from "./actions";
+import { ActionTypes } from "./types";
 
 const nCols = 40;
 const nRows = 30;
@@ -20,13 +20,13 @@ export interface GridState {
   generation: number;
 }
 
-const initialState = {
+export const initialState = {
   grid: Array.from(Array(nRows), () => Array(nCols).fill(0)),
   isPlaying: false,
   generation: 0,
 };
 
-export const gridReducer = (state: GridState = initialState, action: Action) => {
+export const gridReducer = (state: GridState = initialState, action: ActionTypes) => {
   switch (action.type) {
     case "PLAY": {
       return { ...state, isPlaying: true };
@@ -61,7 +61,7 @@ export const gridReducer = (state: GridState = initialState, action: Action) => 
       };
     }
     case "CLEAR": {
-      return { ...state, grid: Array.from(Array(nRows), () => Array(nCols).fill(0)), generation: 0, isPlaying: false };
+      return initialState;
     }
     case "TOGGLE_CELL": {
       const { x, y } = action.payload;

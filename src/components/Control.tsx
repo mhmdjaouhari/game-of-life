@@ -29,12 +29,12 @@ const Control = (props: Props) => {
   }, 100);
   return (
     <div>
-      Generation #{generation}
-      <button onClick={onPlay}>PLAY</button>
-      <button onClick={onPause}>PAUSE</button>
-      <button onClick={onStep}>STEP</button>
-      <button onClick={onClear}>CLEAR</button>
-      <button onClick={onRandomize}>RANDOMIZE</button>
+      Generation #<span data-testid="generation-count">{generation}</span>
+      <button data-testid="play-button" onClick={onPlay}>PLAY</button>
+      <button data-testid="pause-button" onClick={onPause}>PAUSE</button>
+      <button data-testid="step-button" onClick={onStep}>STEP</button>
+      <button data-testid="clear-button" onClick={onClear}>CLEAR</button>
+      <button data-testid="randomize-button" onClick={onRandomize}>RANDOMIZE</button>
     </div>
   );
 };
