@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { pause, play, step, clear, randomize } from "../actions";
 import { GridState } from "../gridReducer";
 import useInterval from "../hooks/useInterval";
+import { Button, ButtonGroup, Card } from "react-bootstrap";
 
 interface Props {}
 
@@ -28,14 +29,34 @@ const Control = (props: Props) => {
     if (isPlaying) onStep();
   }, 100);
   return (
-    <div>
-      Generation #<span data-testid="generation-count">{generation}</span>
-      <button data-testid="play-button" onClick={onPlay}>PLAY</button>
-      <button data-testid="pause-button" onClick={onPause}>PAUSE</button>
-      <button data-testid="step-button" onClick={onStep}>STEP</button>
-      <button data-testid="clear-button" onClick={onClear}>CLEAR</button>
-      <button data-testid="randomize-button" onClick={onRandomize}>RANDOMIZE</button>
-    </div>
+    <Card className="mb-2" bg="light">
+      <Card.Body>
+        <ButtonGroup className="mr-2">
+          <Button variant="secondary" data-testid="play-button" onClick={onPlay}>
+            Play
+          </Button>
+          <Button variant="secondary" data-testid="pause-button" onClick={onPause}>
+            Pause
+          </Button>
+          <Button variant="secondary" data-testid="step-button" onClick={onStep}>
+            Step
+          </Button>
+        </ButtonGroup>
+        <ButtonGroup className="mr-2">
+          <Button variant="secondary" data-testid="clear-button" onClick={onClear}>
+            Clear
+          </Button>
+          <Button variant="secondary" data-testid="randomize-button" onClick={onRandomize}>
+            Randomize
+          </Button>
+        </ButtonGroup>
+        <Card.Title className="mb-0 mt-3">
+          <i>
+            Generation #<span data-testid="generation-count">{generation}</span>
+          </i>
+        </Card.Title>
+      </Card.Body>
+    </Card>
   );
 };
 
