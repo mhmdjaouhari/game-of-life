@@ -31,26 +31,26 @@ const Control = (props: Props) => {
   return (
     <Card className="mb-2" bg="light">
       <Card.Body>
-        <ButtonGroup className="mr-2">
-          <Button variant="secondary" data-testid="play-button" onClick={onPlay}>
+        <ButtonGroup className="mr-2 mb-1">
+          <Button variant="success" size="sm" data-testid="play-button" onClick={onPlay}>
             Play
           </Button>
-          <Button variant="secondary" data-testid="pause-button" onClick={onPause}>
+          <Button variant="secondary" size="sm" data-testid="pause-button" onClick={onPause}>
             Pause
           </Button>
-          <Button variant="secondary" data-testid="step-button" onClick={onStep}>
+          <Button variant="dark" size="sm" data-testid="step-button" onClick={onStep}>
             Step
           </Button>
         </ButtonGroup>
-        <ButtonGroup className="mr-2">
-          <Button variant="secondary" data-testid="clear-button" onClick={onClear}>
+        <ButtonGroup className="mr-2 mb-1">
+          <Button variant="danger" size="sm" data-testid="clear-button" onClick={onClear}>
             Clear
           </Button>
-          <Button variant="secondary" data-testid="randomize-button" onClick={onRandomize}>
+          <Button variant="warning" size="sm" data-testid="randomize-button" onClick={onRandomize}>
             Randomize
           </Button>
         </ButtonGroup>
-        <Card.Title className="mb-0 mt-3">
+        <Card.Title className="mb-0 mt-2">
           <i>
             Generation #<span data-testid="generation-count">{generation}</span>
           </i>

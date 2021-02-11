@@ -10,9 +10,9 @@ const Grid = (props: Props) => {
   const grid = useSelector<GridState, GridState["grid"]>((state) => state.grid);
 
   return (
-    <div data-testid="grid" className="mx-auto" style={{width:680}}>
+    <div data-testid="grid" className="mx-auto">
       {grid.map((row, i) => (
-        <div key={i} style={{ height: 17, whiteSpace: "nowrap" }}>
+        <div key={i} style={{ height: 19, whiteSpace: "nowrap", maxHeight: "2.5vw", }}>
           {row.map((cell, j) => (
             <Cell key={j} x={i} y={j} value={cell} />
           ))}

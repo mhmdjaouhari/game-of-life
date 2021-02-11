@@ -19,8 +19,10 @@ const Cell = (props: Props) => {
       onClick={onToggleCell}
       style={{
         display: "inline-block",
-        width: 16,
-        height: 16,
+        width: 20,
+        height: 18,
+        maxWidth: "calc(2.5% - 1px)",
+        maxHeight: "calc(2.5vw - 1px)",
         marginRight: 1,
         backgroundColor: value === 0 ? "#ddd" : "#000",
       }}></div>
