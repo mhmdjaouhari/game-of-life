@@ -7,8 +7,8 @@ import { Button, ButtonGroup, Card } from "react-bootstrap";
 interface Props {}
 
 const Control = (props: Props) => {
-  const generation = useSelector<GridState, GridState["generation"]>((state) => state.generation);
-  const isPlaying = useSelector<GridState, GridState["isPlaying"]>((state) => state.isPlaying);
+  const generation = useSelector((state: GridState) => state.generation);
+  const isPlaying = useSelector((state: GridState) => state.isPlaying);
   const dispatch = useDispatch();
   const onPlay = () => {
     dispatch(play());

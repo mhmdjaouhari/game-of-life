@@ -1,6 +1,5 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toggleCell } from "../actions";
-import { GridState } from "../gridReducer";
 
 interface Props {
   x: number;
@@ -25,6 +24,7 @@ const Cell = (props: Props) => {
         maxHeight: "calc(2.5vw - 1px)",
         marginRight: 1,
         backgroundColor: value === 0 ? "#ddd" : "#000",
+        float: "left"
       }}></div>
   );
 };

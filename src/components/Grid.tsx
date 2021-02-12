@@ -1,13 +1,11 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { toggleCell } from "../actions";
+import { useSelector } from "react-redux";
 import { GridState } from "../gridReducer";
 import Cell from "./Cell";
 
 interface Props {}
 
 const Grid = (props: Props) => {
-  const grid = useSelector<GridState, GridState["grid"]>((state) => state.grid);
+  const grid = useSelector((state: GridState) => state.grid);
 
   return (
     <div data-testid="grid" className="mx-auto">
