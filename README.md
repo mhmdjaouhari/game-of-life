@@ -10,7 +10,7 @@ Check out the demo here: [https://game-of-life.mojaouhari.vercel.app/](https://g
 
 You can: 
 * Toggle individual cells manually,
-* Eandomize the living cells on the grid,
+* Randomize the living cells on the grid,
 * Step to the next generation,
 * Play/pause an automatic run through generations.
 
